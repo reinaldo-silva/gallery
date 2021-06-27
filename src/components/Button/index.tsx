@@ -4,10 +4,15 @@ import { Container } from "./styles";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
+  background: string;
 }
 
-const Button = ({ children, ...rest }: ButtonProps) => {
-  return <Container>{children}</Container>;
+const Button = ({ children, background, ...rest }: ButtonProps) => {
+  return (
+    <Container background={background} {...rest}>
+      {children}
+    </Container>
+  );
 };
 
 export default Button;

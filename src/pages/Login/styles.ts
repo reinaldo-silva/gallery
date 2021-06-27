@@ -30,3 +30,12 @@ export const LoginContainer = styled.div`
   align-items: center;
   padding: 10px 50px;
 `;
+export const CadastroContainer = styled.div`
+  width: 415px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 50px;
+`;

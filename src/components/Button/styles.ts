@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const Container = styled.button`
+interface ButtonProps {
+  background: string;
+}
+
+export const Container = styled.button<ButtonProps>`
   width: 100%;
   height: 50px;
   border-radius: 8px;
@@ -11,11 +15,11 @@ export const Container = styled.button`
   justify-content: center;
   align-items: center;
   color: #fff;
-  background: #08c869;
+  background: ${(props) => props.background};
   transition: 0.1s;
 
   :hover {
-    background: #06944e;
+    filter: brightness(0.8);
   }
 
   svg {
