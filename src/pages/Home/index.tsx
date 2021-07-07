@@ -8,6 +8,10 @@ import { useState } from "react";
 const Home: React.FC = () => {
   const [isAsideOpen, setIsAsideOpen] = useState(false);
 
+  const handleMenuFilter = () => {
+    setIsAsideOpen(false);
+  };
+
   return (
     <>
       <Header />
@@ -15,7 +19,7 @@ const Home: React.FC = () => {
         {isAsideOpen && (
           <aside>
             barra lateral
-            <strong>123</strong>
+            <strong onClick={handleMenuFilter}>123</strong>
           </aside>
         )}
         <main>
