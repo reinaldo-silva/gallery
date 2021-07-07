@@ -4,8 +4,14 @@ import { Container } from "./styles";
 import Photo from "../../assets/img/picture1.jpeg";
 
 const Picture: React.FC = () => {
+  const arrayRotateImage = [-6, -5, -4, 4, 5, 6];
+
+  const randomNumberRotateImag = (array: number[]) => {
+    return arrayRotateImage[Math.floor(Math.random() * array.length)];
+  };
+
   return (
-    <Container>
+    <Container rotate={randomNumberRotateImag(arrayRotateImage)}>
       <img src={Photo} alt="" />
       <span>Titulo da Imagem</span>
       <p>08/12/2021</p>
