@@ -32,6 +32,7 @@ export default createGlobalStyle`
 
 export const Title = styled.h2`
   font-size: 24px;
+  color: rgba(0, 0, 0, 0.8);
 `;
 
 export const TitlePage = styled.h2`
@@ -39,6 +40,7 @@ export const TitlePage = styled.h2`
   display: flex;
   align-items: center;
   border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+  color: rgba(0, 0, 0, 0.8);
 `;
 
 export const SpanLink = styled.a`

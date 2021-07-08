@@ -32,10 +32,16 @@ export const Container = styled.div`
       padding: 0 16px;
       font-weight: bold;
       color: #aa59eb;
+      transition: 0.1s;
 
       svg {
         height: 20px;
         width: 20px;
+      }
+
+      :hover {
+        background: #aa59eb;
+        color: #f8f8f8;
       }
     }
 

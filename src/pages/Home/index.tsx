@@ -1,10 +1,10 @@
-import React from "react";
-
-import { Container } from "./styles";
+import React, { useState } from "react";
+import { FaFilter } from "react-icons/fa";
+import { TiArrowBack } from "react-icons/ti";
+import { TitlePage } from "../../assets/styles/global";
 import Header from "../../components/Header/index";
 import Picture from "../../components/Picture";
-import { useState } from "react";
-import { TitlePage } from "../../assets/styles/global";
+import { Container } from "./styles";
 
 const Home: React.FC = () => {
   const [isAsideOpen, setIsAsideOpen] = useState(true);
@@ -16,29 +16,45 @@ const Home: React.FC = () => {
   return (
     <>
       <Header />
-      <Container>
+      <Container isAsideOpen={isAsideOpen}>
         <main>
-          {isAsideOpen && (
-            <aside>
-              <TitlePage>Filtrar por categorias</TitlePage>
+          <aside>
+            <TitlePage>Filtrar por categorias</TitlePage>
 
-              <button>Limpar filtros</button>
+            <button>Limpar filtros</button>
 
-              <ul>
-                <li>Viagem</li>
-                <li>Faculdade</li>
-                <li>Amigos</li>
-                <li>Familia</li>
-                <li>Portugal</li>
-              </ul>
-            </aside>
-          )}
+            <ul>
+              <li>Viagem</li>
+              <li>Faculdade</li>
+              <li>Amigos</li>
+              <li>Familia</li>
+              <li>Portugal</li>
+            </ul>
+          </aside>
+
           <div>
             <section>
-              <TitlePage>
-                Ola Reinaldo, aqui estão todas suas fotas :)
-              </TitlePage>
-              <button onClick={handleMenuFilter}>filtros</button>
+              {!isAsideOpen && (
+                <TitlePage>
+                  Ola Reinaldo, aqui estão todas suas fotas :)
+                </TitlePage>
+              )}
+
+              <ul>
+                <div onClick={handleMenuFilter}>
+                  {isAsideOpen ? <TiArrowBack /> : <FaFilter />}
+                </div>
+
+                <li>Férias</li>
+                <li>Viagem</li>
+                <li>Portugal</li>
+                <li>Portugal</li>
+                <li>Portugal</li>
+                <li>Portugal</li>
+                <li>Portugal</li>
+                <li>Portugal</li>
+                <li>Portugal</li>
+              </ul>
             </section>
             <section>
               <Picture />
