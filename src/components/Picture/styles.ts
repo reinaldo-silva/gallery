@@ -6,13 +6,13 @@ interface ContainerProps {
 
 export const Container = styled.div<ContainerProps>`
   width: 175px;
-  height: auto;
+  height: 220px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   padding: 10px;
-  margin-bottom: 50px;
+  margin: 0 25px 50px;
   transition: 0.4s;
 
   background: #fff;

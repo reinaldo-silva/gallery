@@ -1,10 +1,8 @@
 import React from "react";
-
-import { Container } from "./styles";
-
-import Logo from "../../assets/img/Logo2.svg";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
+import Logo from "../../assets/img/Logo2.svg";
+import { Container } from "./styles";
 
 const Header: React.FC = () => {
   const history = useHistory();

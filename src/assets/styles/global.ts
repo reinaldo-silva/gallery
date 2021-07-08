@@ -33,6 +33,14 @@ export default createGlobalStyle`
 export const Title = styled.h2`
   font-size: 24px;
 `;
+
+export const TitlePage = styled.h2`
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+`;
+
 export const SpanLink = styled.a`
   font-weight: bold;
   cursor: pointer;

@@ -5,6 +5,8 @@ export const Container = styled.div`
   height: 100px;
   display: flex;
   justify-content: center;
+  position: fixed;
+  z-index: 10;
 
   background: #f8f8f8;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);

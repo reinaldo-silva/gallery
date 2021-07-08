@@ -9,7 +9,9 @@ export const Container = styled.div`
   align-items: center;
 
   main {
+    margin-top: 100px;
     width: 100%;
+    margin-left: 450px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,12 +19,12 @@ export const Container = styled.div`
     > div {
       height: 100%;
       width: 90%;
-      max-width: 1100px;
+      //max-width: 1100px;
       padding: 20px 50px;
 
       section {
         h2 {
-          height: 60px;
+          min-height: 60px;
           display: flex;
           align-items: center;
           border-bottom: 2px solid rgba(0, 0, 0, 0.4);
@@ -30,10 +32,11 @@ export const Container = styled.div`
 
         :last-child {
           padding: 40px 0;
-          height: auto;
-          display: grid;
-          grid-template-columns: auto auto auto auto;
-          justify-content: space-around;
+          min-height: calc(100vh - 200px);
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: start;
+          align-items: flex-start;
         }
       }
     }
@@ -41,8 +44,45 @@ export const Container = styled.div`
 
   aside {
     width: 450px;
-    height: calc(100% - 100px);
-    background-color: red;
+    //transform: translateX(-450px);
+    transition: 0.5s;
+    height: calc(100vh - 100px);
+    position: fixed;
+    top: 100px;
+    left: 0;
+    background-color: #f8f8f8;
     border-right: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 20px 40px;
+
+    button {
+      width: 100%;
+      height: 40px;
+      margin: 20px 0 40px;
+      border-radius: 4px;
+      border: 2px solid rgba(255, 0, 0, 0.6);
+      font-weight: bold;
+      color: rgba(255, 0, 0, 0.6);
+      background: transparent;
+    }
+
+    ul {
+      width: 100%;
+      display: grid;
+      grid-gap: 14px;
+      grid-template-columns: 1fr 1fr;
+
+      li {
+        list-style: none;
+        width: 100%;
+        height: 50px;
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
   }
 `;

@@ -4,28 +4,41 @@ import { Container } from "./styles";
 import Header from "../../components/Header/index";
 import Picture from "../../components/Picture";
 import { useState } from "react";
+import { TitlePage } from "../../assets/styles/global";
 
 const Home: React.FC = () => {
-  const [isAsideOpen, setIsAsideOpen] = useState(false);
+  const [isAsideOpen, setIsAsideOpen] = useState(true);
 
   const handleMenuFilter = () => {
-    setIsAsideOpen(false);
+    setIsAsideOpen(!isAsideOpen);
   };
 
   return (
     <>
       <Header />
       <Container>
-        {isAsideOpen && (
-          <aside>
-            barra lateral
-            <strong onClick={handleMenuFilter}>123</strong>
-          </aside>
-        )}
         <main>
+          {isAsideOpen && (
+            <aside>
+              <TitlePage>Filtrar por categorias</TitlePage>
+
+              <button>Limpar filtros</button>
+
+              <ul>
+                <li>Viagem</li>
+                <li>Faculdade</li>
+                <li>Amigos</li>
+                <li>Familia</li>
+                <li>Portugal</li>
+              </ul>
+            </aside>
+          )}
           <div>
             <section>
-              <h2>Ola Reinaldo, aqui estão todas suas fotas :)</h2>
+              <TitlePage>
+                Ola Reinaldo, aqui estão todas suas fotas :)
+              </TitlePage>
+              <button onClick={handleMenuFilter}>filtros</button>
             </section>
             <section>
               <Picture />
