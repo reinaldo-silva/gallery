@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 interface HomeProps {
   isAsideOpen: boolean;
+  isOpenAddPicture: boolean;
 }
 
 export const Container = styled.div<HomeProps>`
@@ -11,6 +12,17 @@ export const Container = styled.div<HomeProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+
+  > div {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+  }
 
   main {
     margin-top: 100px;
@@ -127,27 +139,6 @@ export const Container = styled.div<HomeProps>`
       display: grid;
       grid-gap: 14px;
       grid-template-columns: 1fr 1fr;
-
-      li {
-        list-style: none;
-        width: 100%;
-        color: rgba(0, 0, 0, 0.6);
-        font-weight: bold;
-        height: 50px;
-        background: #fff;
-        border: 2px solid rgba(0, 0, 0, 0.2);
-        border-radius: 4px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        cursor: pointer;
-        transition: 0.1s;
-
-        :hover {
-          border: 2px solid #aa59eb;
-          color: #aa59eb;
-        }
-      }
     }
   }
 `;
