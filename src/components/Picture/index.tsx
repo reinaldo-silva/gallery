@@ -12,7 +12,9 @@ const Picture: React.FC = () => {
 
   return (
     <Container rotate={randomNumberRotateImag(arrayRotateImage)}>
-      <img src={Photo} alt="" />
+      <div>
+        <img src={Photo} alt="" />
+      </div>
       <span>Titulo da Imagem</span>
       <p>08/12/2021</p>
     </Container>

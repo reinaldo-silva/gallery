@@ -14,7 +14,7 @@ export default createGlobalStyle`
     font: 14px 'Montserrat', sans-serif;
   }
 
-  body, input, button {
+  body, input, button, select {
     font: 14px 'Montserrat', sans-serif;
     border: none;
   }

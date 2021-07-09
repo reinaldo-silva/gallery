@@ -13,8 +13,7 @@ export const Container = styled.div`
 
   header {
     height: 100%;
-    width: 90%;
-    max-width: 1100px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;

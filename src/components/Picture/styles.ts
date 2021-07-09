@@ -11,7 +11,7 @@ export const Container = styled.div<ContainerProps>`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 10px;
+  padding: 14px 10px;
   margin: 0 25px 50px;
   transition: 0.4s;
 
@@ -20,11 +20,16 @@ export const Container = styled.div<ContainerProps>`
     0px 5px 22px rgba(0, 0, 0, 0.12), 0px 7px 8px rgba(0, 0, 0, 0.2);
   transform: rotate(${(props) => props.rotate}deg);
 
-  img {
+  div {
     height: 151px;
     width: 151px;
-  }
 
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
   span {
     height: 30px;
     width: 100%;

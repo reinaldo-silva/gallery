@@ -1,26 +1,27 @@
 import React, { useState } from "react";
+import { CgClose } from "react-icons/cg";
 import { FaFilter } from "react-icons/fa";
 import { TiArrowBack } from "react-icons/ti";
 import { TitlePage } from "../../assets/styles/global";
+import Button from "../../components/Button";
 import ButtonFilter from "../../components/ButtonFilter";
+import Combobox from "../../components/Combobox/index";
+import Dropzone from "../../components/Dropzone";
 import Header from "../../components/Header/index";
+import Input from "../../components/Input";
 import Picture from "../../components/Picture";
 import PictureAdd from "../../components/PictureAdd";
-import { Container } from "./styles";
+import { categories } from "../../data";
+import { AddNewImage, Container } from "./styles";
 
 const Home: React.FC = () => {
-  const categories = [
-    "Ferias",
-    "Familia",
-    "Amigos",
-    "Faculdade",
-    "Praia",
-    "Festas",
-  ];
-
   const [isAsideOpen, setIsAsideOpen] = useState(false);
   const [isOpenAddPicture, setIsOpenAddPicture] = useState(false);
   const [categoriesFilter, setCategoriesFilter] = useState<String[]>([]);
+  const [selectedFile, setSelectedFile] = useState<File>();
+
+  const [title, setTitle] = useState("");
+  const [categorySelcted, setCategorySelcted] = useState("");
 
   const handleMenuFilter = () => {
     setIsAsideOpen(!isAsideOpen);
@@ -49,11 +50,42 @@ const Home: React.FC = () => {
     setCategoriesFilter(() => []);
   };
 
+  const handleAddNewImage = (e: any) => {
+    e.preventDefault();
+    const image = {
+      title,
+      selectedFile,
+      categorySelcted,
+    };
+
+    console.log(image);
+  };
+
   return (
     <>
       <Header />
       <Container isAsideOpen={isAsideOpen} isOpenAddPicture={isOpenAddPicture}>
-        {/* <div>teste</div> */}
+        {isOpenAddPicture && (
+          <AddNewImage id="modal">
+            <Dropzone oneFileUploaded={setSelectedFile} />
+
+            <form onSubmit={handleAddNewImage}>
+              <TitlePage>Detalhes da Imagem</TitlePage>
+              <Input
+                placeholder="Titulo da Imagem"
+                onChange={(e) => setTitle(e.target.value)}
+              />
+              <Combobox setValue={setCategorySelcted} />
+
+              <Button type="submit" background="#aa59eb">
+                Salvar
+              </Button>
+            </form>
+            <p onClick={handleNewImage}>
+              <CgClose />
+            </p>
+          </AddNewImage>
+        )}
         <main>
           <aside>
             <TitlePage>Filtrar por categorias</TitlePage>

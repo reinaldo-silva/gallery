@@ -12,22 +12,12 @@ export const Container = styled.div<HomeProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-
-  > div {
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.3);
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 20;
-  }
 
   main {
+    height: auto;
     margin-top: 100px;
-    width: 100%;
-    min-width: calc(100vw - 400px);
+    width: ${(props) => (props.isAsideOpen ? "calc(100vw - 400px)" : "0100%")};
+
     margin-left: ${(props) => (props.isAsideOpen ? "400px" : "0")};
     display: flex;
     align-items: center;
@@ -36,7 +26,7 @@ export const Container = styled.div<HomeProps>`
 
     > div {
       height: 100%;
-      width: 90%;
+      width: 100%;
       //max-width: 1100px;
       padding: 20px 50px;
 
@@ -140,5 +130,54 @@ export const Container = styled.div<HomeProps>`
       grid-gap: 14px;
       grid-template-columns: 1fr 1fr;
     }
+  }
+`;
+
+export const AddNewImage = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  > p {
+    position: absolute;
+    top: 50px;
+    right: 80px;
+
+    height: 50px;
+    min-width: 50px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.14),
+      0px 1px 18px rgba(0, 0, 0, 0.12), 0px 3px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+
+    svg {
+      color: rgba(0, 0, 0, 0.6);
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  > form {
+    width: 410px;
+    height: 350px;
+    background: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12),
+      0px 1px 8px rgba(0, 0, 0, 0.2);
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 `;
