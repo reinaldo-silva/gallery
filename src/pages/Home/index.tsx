@@ -57,6 +57,7 @@ const Home: React.FC = () => {
       selectedFile,
       categorySelcted,
     };
+    handleNewImage();
 
     console.log(image);
   };
