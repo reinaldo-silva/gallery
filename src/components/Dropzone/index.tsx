@@ -5,9 +5,10 @@ import { Container } from "./styles";
 
 interface props {
   oneFileUploaded: (file: File) => void;
+  title: string;
 }
 
-const Dropzone = ({ oneFileUploaded }: props) => {
+const Dropzone = ({ oneFileUploaded, title }: props) => {
   const [selectedFileUrl, setSelectedFileUrl] = useState("");
 
   const onDrop = useCallback(
@@ -39,7 +40,7 @@ const Dropzone = ({ oneFileUploaded }: props) => {
           </p>
         )}
       </div>
-      <span>Titulo da Imagem</span>
+      <span>{title !== "" ? title : "Titulo da Imagem"}</span>
     </Container>
   );
 };

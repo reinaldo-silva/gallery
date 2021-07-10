@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Container } from "./styles";
 import Photo from "../../assets/img/picture1.jpeg";
 
-const Picture: React.FC = () => {
-  const arrayRotateImage = [-6, -5, -4, 4, 5, 6];
+const Picture = () => {
+  const [arrayRotateImage] = useState([-6, -5, -4, 4, 5, 6]);
 
   const randomNumberRotateImag = (array: number[]) => {
     return arrayRotateImage[Math.floor(Math.random() * array.length)];

@@ -27,8 +27,10 @@ const Home: React.FC = () => {
     setIsAsideOpen(!isAsideOpen);
   };
 
-  const handleNewImage = () => {
+  const handleOpenModal = () => {
     setIsOpenAddPicture(!isOpenAddPicture);
+    setCategorySelcted("");
+    setTitle("");
   };
 
   const addFilter = (category: string) => {
@@ -57,7 +59,7 @@ const Home: React.FC = () => {
       selectedFile,
       categorySelcted,
     };
-    handleNewImage();
+    handleOpenModal();
 
     console.log(image);
   };
@@ -68,7 +70,7 @@ const Home: React.FC = () => {
       <Container isAsideOpen={isAsideOpen} isOpenAddPicture={isOpenAddPicture}>
         {isOpenAddPicture && (
           <AddNewImage id="modal">
-            <Dropzone oneFileUploaded={setSelectedFile} />
+            <Dropzone oneFileUploaded={setSelectedFile} title={title} />
 
             <form onSubmit={handleAddNewImage}>
               <TitlePage>Detalhes da Imagem</TitlePage>
@@ -82,7 +84,7 @@ const Home: React.FC = () => {
                 Salvar
               </Button>
             </form>
-            <p onClick={handleNewImage}>
+            <p onClick={handleOpenModal}>
               <CgClose />
             </p>
           </AddNewImage>
@@ -134,7 +136,7 @@ const Home: React.FC = () => {
               <Picture />
               <Picture />
               <Picture />
-              <PictureAdd click={handleNewImage} />
+              <PictureAdd click={handleOpenModal} />
             </section>
           </div>
         </main>
