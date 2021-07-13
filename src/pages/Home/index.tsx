@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { CgClose } from "react-icons/cg";
 import { FaFilter } from "react-icons/fa";
 import { TiArrowBack } from "react-icons/ti";
@@ -12,6 +13,7 @@ import Input from "../../components/Input";
 import Picture from "../../components/Picture";
 import PictureAdd from "../../components/PictureAdd";
 import { categories } from "../../data";
+import api from "../../services/api";
 import { AddNewImage, Container } from "./styles";
 
 const Home: React.FC = () => {
@@ -19,6 +21,8 @@ const Home: React.FC = () => {
   const [isOpenAddPicture, setIsOpenAddPicture] = useState(false);
   const [categoriesFilter, setCategoriesFilter] = useState<String[]>([]);
   const [selectedFile, setSelectedFile] = useState<File>();
+
+  const [gallery, setGallery] = useState([]) as any;
 
   const [title, setTitle] = useState("");
   const [categorySelcted, setCategorySelcted] = useState("");
@@ -63,6 +67,20 @@ const Home: React.FC = () => {
 
     console.log(image);
   };
+
+  useEffect(() => {
+    api
+      .get("/gallery", {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjYxNzU3NjEsImV4cCI6MTYyNjI2MjE2MSwic3ViIjoiNjBlZDc5MGU0MzBiMzQwMDJhMzhmZGI1In0.g-K7TlsVts3a-TtS0UthwJTuxT-ZPqNVUg0sG_8f-bc",
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setGallery(res.data);
+      });
+  }, []);
 
   return (
     <>
@@ -126,16 +144,13 @@ const Home: React.FC = () => {
               </ul>
             </section>
             <section>
-              <Picture />
-              <Picture />
-              <Picture />
-              <Picture />
-              <Picture />
-              <Picture />
-              <Picture />
-              <Picture />
-              <Picture />
-              <Picture />
+              {gallery.map((picture: any) => (
+                <Picture
+                  key={picture.photo_id}
+                  title={picture.title}
+                  image={picture.image_url}
+                />
+              ))}
               <PictureAdd click={handleOpenModal} />
             </section>
           </div>

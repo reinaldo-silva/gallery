@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 
 import { Container } from "./styles";
-import Photo from "../../assets/img/picture1.jpeg";
 
-const Picture = () => {
+interface PictureImage {
+  title: string;
+  image: string;
+}
+
+const Picture = ({ title, image }: PictureImage) => {
   const [arrayRotateImage] = useState([-6, -5, -4, 4, 5, 6]);
 
   const randomNumberRotateImag = (array: number[]) => {
@@ -13,9 +17,9 @@ const Picture = () => {
   return (
     <Container rotate={randomNumberRotateImag(arrayRotateImage)}>
       <div>
-        <img src={Photo} alt="" />
+        <img src={image} alt="" />
       </div>
-      <span>Titulo da Imagem</span>
+      <span>{title}</span>
       <p>08/12/2021</p>
     </Container>
   );
