@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 
 import { Container } from "./styles";
 
@@ -25,4 +25,4 @@ const Picture = ({ title, image }: PictureImage) => {
   );
 };
 
-export default Picture;
+export default memo(Picture);

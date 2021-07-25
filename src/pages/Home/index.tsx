@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useCallback } from "react";
 import { CgClose } from "react-icons/cg";
 import { FaFilter } from "react-icons/fa";
 import { TiArrowBack } from "react-icons/ti";
@@ -16,7 +16,7 @@ import { categories } from "../../data";
 import api from "../../services/api";
 import { AddNewImage, Container } from "./styles";
 
-const Home: React.FC = () => {
+const Home = () => {
   const [isAsideOpen, setIsAsideOpen] = useState(false);
   const [isOpenAddPicture, setIsOpenAddPicture] = useState(false);
   const [categoriesFilter, setCategoriesFilter] = useState<String[]>([]);
@@ -68,19 +68,27 @@ const Home: React.FC = () => {
     console.log(image);
   };
 
-  useEffect(() => {
-    api
+  const listGallery = useCallback(async () => {
+    let filter = "";
+    categoriesFilter.forEach((category) => {
+      filter === ""
+        ? (filter = `${category}`)
+        : (filter = `${filter},${category}`);
+    });
+    await api
       .get("/gallery", {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjYxNzU3NjEsImV4cCI6MTYyNjI2MjE2MSwic3ViIjoiNjBlZDc5MGU0MzBiMzQwMDJhMzhmZGI1In0.g-K7TlsVts3a-TtS0UthwJTuxT-ZPqNVUg0sG_8f-bc",
+        params: {
+          category: filter,
         },
       })
       .then((res) => {
-        console.log(res.data);
         setGallery(res.data);
       });
-  }, []);
+  }, [categoriesFilter]);
+
+  useEffect(() => {
+    listGallery();
+  }, [categoriesFilter, listGallery]);
 
   return (
     <>

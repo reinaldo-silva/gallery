@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { BiImageAdd } from "react-icons/bi";
 import { Container } from "./styles";
 
@@ -27,4 +27,4 @@ const PictureAdd = ({ click }: PictureAddProps) => {
   );
 };
 
-export default PictureAdd;
+export default memo(PictureAdd);
