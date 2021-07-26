@@ -56,16 +56,37 @@ const Home = () => {
     setCategoriesFilter(() => []);
   };
 
-  const handleAddNewImage = (e: any) => {
+  const handleAddNewImage = async (e: any) => {
     e.preventDefault();
-    const image = {
-      title,
-      selectedFile,
-      categorySelcted,
-    };
-    handleOpenModal();
 
-    console.log(image);
+    const data = new FormData();
+
+    if (title === "") {
+      alert("Preencha o título da imagem!");
+      return;
+    }
+
+    if (
+      categorySelcted === "" ||
+      categorySelcted === "Selecione uma categoria"
+    ) {
+      alert("Selecione uma categoria!");
+      return;
+    }
+
+    if (!selectedFile) {
+      alert("Selecione sua foto!");
+      return;
+    }
+
+    data.append("title", title);
+    data.append("category", categorySelcted);
+    data.append("image", selectedFile);
+
+    await api.post("gallery", data);
+
+    handleOpenModal();
+    listGallery();
   };
 
   const listGallery = useCallback(async () => {
@@ -76,7 +97,7 @@ const Home = () => {
         : (filter = `${filter},${category}`);
     });
     await api
-      .get("/gallery", {
+      .get("gallery", {
         params: {
           category: filter,
         },
@@ -157,6 +178,7 @@ const Home = () => {
                   key={picture.photo_id}
                   title={picture.title}
                   image={picture.image_url}
+                  date={picture.date}
                 />
               ))}
               <PictureAdd click={handleOpenModal} />
