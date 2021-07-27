@@ -8,17 +8,35 @@ import { FaSignInAlt } from "react-icons/fa";
 import { Title, SpanLink } from "../../assets/styles/global";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import api from "../../services/api";
+import { useEffect } from "react";
 
 const Login: React.FC = () => {
   const history = useHistory();
   const [isLogin, setIsLogin] = useState(true);
+  const [emailLogin, setEmailLogin] = useState("");
+  const [passwordLogin, setPasswordLogin] = useState("");
 
   const handleRegisterOrLogin = () => {
     setIsLogin(!isLogin);
   };
 
-  const handleLogin = () => {
-    history.push("/home");
+  const handleLogin = async () => {
+    try {
+      const { data } = await api.post("auth", {
+        email: emailLogin,
+        password: passwordLogin,
+      });
+
+      console.log(data);
+
+      localStorage.setItem("@App:user", JSON.stringify(data.credential.name));
+      localStorage.setItem("@App:token", data.token);
+    } catch (err) {
+      console.log(err);
+    }
+
+    //history.push("/home");
   };
 
   return (
@@ -31,8 +49,15 @@ const Login: React.FC = () => {
           <>
             <LoginContainer>
               <Title>Login</Title>
-              <Input placeholder="E-mail" />
-              <Input placeholder="Senha" />
+              <Input
+                placeholder="E-mail"
+                onChange={(e) => setEmailLogin(e.target.value)}
+              />
+              <Input
+                placeholder="Senha"
+                type="password"
+                onChange={(e) => setPasswordLogin(e.target.value)}
+              />
               <Button background="#08C869" onClick={handleLogin}>
                 <FaSignInAlt /> Entrar
               </Button>
